@@ -1,15 +1,22 @@
-const express = require('express');
+import express from 'express';
+import colors from 'colors'
+import dotenv from 'dotenv'
+
+// configure env
+dotenv.config()
 
 //rest object
-const app = express()
+const app = express();
 
 // rest api
-app.get('/',(res, req) =>{
-    res.send({
-        message:"welcome to ecommer app"
-    })
-})
-
+app.get("/", (req ,res) => {
+  res.send("<h1>Welcome to ecom</h1>");
+});
 
 // Port
-const PORT = 8080
+const PORT = process.env.PORT || 8080;
+
+// run listen
+app.listen(PORT, () => {
+  console.log(`server Running ${process.env.DEV_MODE} on MODE ON PORT     ${PORT}`.bgCyan.white);
+});
